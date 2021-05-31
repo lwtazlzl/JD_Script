@@ -1,9 +1,18 @@
 # JD_Script
 ![JD_Script](doc/JD_Script.png)
+## 通知
+
+      由于之前的安装方式比较麻烦，现在统一用安装方法1的插件安装方法，本地安装方式可能以后不考虑支持了
+
 ## 序言
-   调用https://github.com/lxk0301/jd_scripts 进行测试学习，在X86机器使用正常，其他机器满足依赖应该问题不大,
+   调用https://gitee.com/lxk0301/jd_scripts/blob/master/ 库的JS脚本，进行测试学习，在X86机器使用正常，其他机器满足依赖应该问题不大,
+   感谢作者lxk0301 shylocks大佬和其他大佬的JS脚本，谢谢你们的付出
    
    **lxk0301大佬的JS脚本里面的助力码替换成我的了，默认会给我助力，如果你不需要自行删除代码或者禁用他**
+  
+   ！！！请不要拿去骗小白贩卖，我知道你看的到，你拿去卖，我直接删库，随便给你个大礼。。
+   
+   觉得好用请点个⭐鼓励一下下~
 
 ## 支持系统
 openwrt X86 （基于x86编写）
@@ -12,7 +21,12 @@ openwrt X86 （基于x86编写）
 
 N1（群友极地阳光测试）
 
-**注意1（设备Rom小于128M别折腾了，你装不下依赖，不用往下看了）**
+NANOPI R4S (群友snow测试)
+
+
+
+
+**注意1（设备Rom小于128M别折腾了，你装不下依赖，不用往下看了，RAM最好大点1G左右，512M也行就是不能跑太多账号，不然会死机）**
 
 **注意2（linux底子太薄的，建议好好学习一下，这不是无脑脚本，最起码你要看懂底下操作是做啥的）**
 
@@ -26,70 +40,44 @@ N1（群友极地阳光测试）
          node 大于10
  
          node-npm 大于10
+         
+         openssh-client
+         
+         openssh-keygen
+
+         python3
  
 
-安装办法1
+## 安装办法（插件安装）
 
-         通过opkg update 再 opkg install git git-http node node-npm
-
-安装办法2
-
-        编译固件的时候加上
-        不会编译的可以采用我的编译辅助脚本编译： https://github.com/openwrtcompileshell/OpenwrtCompileScript
-
-**node和node-npm版本一定要大于10**，安装node和node-npm以后用 opkg list-installed | grep node 查看node版本，两个都要大于10
-
-
-
-**2.安装完依赖以后用npm安装一些模块**
-
-         npm install -g crypto-js got http-server tough-cookie download request tunnel
-
-
-**如果你执行安装npm install -g crypto-js got http-server tough-cookie download request tunnel报错，你也可以用以下代码安装**
-
-         wget https://raw.githubusercontent.com/LXK9301/jd_scripts/master/package.json
+**插件地址**
         
-         npm install
+        https://github.com/ITdesk01/jd_openwrt_script
+      
+安装插件好处，会帮你安装好依赖和npm模块，升级openwrt系统配置不会丢失，无需再重新设置，备份路由器数据的时候也会一起打包走，首次开机联网要等5分钟左右（视cpu与网络速度，进程可以看系统日志）
 
-**还不行可以采用最后一个办法（痴雨提供）**
-设置NPM 下载源为淘宝 
-
-         npm config set registry https://registry.npm.taobao.org
-
-查看当前NPM下载源
-
-         npm config get registry
-
-然后再执行
-
-          npm install -g crypto-js got http-server tough-cookie download request tunnel
+不会编译的可以采用我的编译辅助脚本编译： https://github.com/openwrtcompileshell/OpenwrtCompileScript（编译出来就是带插件的）
 
 
-**3.开始下载脚本**
-
-         git clone https://github.com/ITdesk01/JD_Script.git /usr/share/JD_Script
-         cd /usr/share/JD_Script && chmod 777 jd.sh 
-         sh jd.sh 
-         
-
-脚本安装完成以后可以用以下代码
-
-         sh $jd #直接调用代码
-
-         cd $jd_file # 可以直接进入代码所在文件夹
 
 
-##3.已知问题!!!
+## 已知问题!!!
 
-1.下载下来的js都是空的，建议强制代理raw.githubusercontent.com
+1.下载下来的js都是空的，
+   
+		强制代理raw.githubusercontent.com
+		rm -rf /root/.ssh && sh $jd update
 
 2.互助码怎么找
 
-         sh $jd jd_sharecode
+		sh $jd jd_sharecode
+         
+3.如何获取cookie
+
+		sh $jd getcookie #扫码自动填cookie
 
 
-**4.问题反馈：https://github.com/ITdesk01/JD_Script/issues (描述清楚问题或者上图片，不然可能没有人理)**
+**问题反馈：https://github.com/ITdesk01/JD_Script/issues (描述清楚问题或者上图片，不然可能没有人理)**
 
 **吹水群** :**667491026** (公子大爷请绕道，白嫖可能没人理)
 
